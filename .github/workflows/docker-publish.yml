@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: kysb-reality
+  IMAGE_NAME: sbky-reality-node
 
 jobs:
   docker:
