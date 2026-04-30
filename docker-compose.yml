@@ -1,0 +1,35 @@
+services:
+  singbox-node:
+    build: .
+    image: your-dockerhub-name/singbox-reality-node:latest
+    container_name: singbox-reality-node
+    restart: unless-stopped
+    environment:
+      # 改成你的公网 IP、域名，或 Koyeb TCP Proxy 分配的 host。
+      PUBLIC_HOST: "your-host.example.com"
+      NODE_NAME: "my-node"
+      SNI: "adm.com"
+
+      # 首次启动可不填；确认日志里的值后建议固定下来，避免重启后变更。
+      # UUID: "00000000-0000-0000-0000-000000000000"
+      # REALITY_PRIVATE_KEY: ""
+      # REALITY_PUBLIC_KEY: ""
+      # SHORT_ID: ""
+      # ANYTLS_PASSWORD: ""
+
+      VLESS_TCP_PORT: "443"
+      VLESS_HU_PORT: "8443"
+      ANYTLS_PORT: "9443"
+      SUB_PORT: "8080"
+
+      # 如果云厂商外部端口与容器内部端口不同，订阅里要填写外部端口。
+      EXTERNAL_VLESS_TCP_PORT: "443"
+      EXTERNAL_VLESS_HU_PORT: "8443"
+      EXTERNAL_ANYTLS_PORT: "9443"
+    ports:
+      - "443:443/tcp"
+      - "8443:8443/tcp"
+      - "9443:9443/tcp"
+      - "8080:8080/tcp"
+    volumes:
+      - ./data:/data
