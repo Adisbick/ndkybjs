@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: singbox-reality-node
+  IMAGE_NAME: kysb-reality
 
 jobs:
   docker:
